@@ -154,13 +154,13 @@ li{
 }
 .img-presentacion2{
     z-index: 3;
-    background-image: url("/images/churros1.jpg"); 
+    background-image: url('../images/churros1.jpg'); 
     background-position: left; 
     opacity: 0;
 }
 .img-presentacion3{
     z-index: 2;
-    background-image: url("/images/churros3.jpg");  
+    background-image: url(kscaritas/images/churros3.jpg);  
     opacity: 0;
 }
 .img-presentacion4{
