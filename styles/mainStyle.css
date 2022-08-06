@@ -144,23 +144,39 @@ li{
 
 .img-presentacion0{
     z-index: 5;
+
     background-image: url('../images/churros2.jpg');
+
+    background-image: url("../images/churros2.jpg");
+
     opacity: 1;  
 }
 .img-presentacion1{
     z-index: 4;
+
     background-image: url("../images/churrin.png");
+
+    background-image: url(../images/churrin.png);
+
     opacity: 0;   
 }
 .img-presentacion2{
     z-index: 3;
+
     background-image: url("../images/churros1.jpg"); 
+
+    background-image: url('../images/churros1.jpg'); 
+
     background-position: left; 
     opacity: 0;
 }
 .img-presentacion3{
     z-index: 2;
+
     background-image: url("../images/churros3.jpg");  
+
+    background-image: url(kscaritas/images/churros3.jpg);  
+
     opacity: 0;
 }
 .img-presentacion4{
@@ -257,6 +273,7 @@ animation: slide 10s infinite ease-in-out;
     95% {left: -300%}
 }
 
+
 .div-botones{
    /*  display: flex; */
     flex-direction: row;
@@ -295,4 +312,5 @@ animation: slide 10s infinite ease-in-out;
 
     filter: blur(0px);
 }
+
 
