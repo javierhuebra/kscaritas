@@ -1,0 +1,35 @@
+[
+    {
+      "day": "5",
+      "primerCiclo": {
+        "alto":7.1,
+        "bajo":1.9,
+        "primeraHora":["02:07","Alta"],
+        "segundaHora":["08:14","Baja"]
+      },
+      "segundoCiclo": {
+        "alto":7.4,
+        "bajo":1.4,
+        "primeraHora":["14:15","Alta"],
+        "segundaHora":["20:36","Baja"]
+      },
+      "actPesquera": 0
+    },
+    {
+      "day": "6",
+      "primerCiclo": {
+        "alto":7.1,
+        "bajo":1.9,
+        "primeraHora":["02:40","Alta"],
+        "segundaHora":["08:49","Baja"]
+      },
+      "segundoCiclo": {
+        "alto":7.4,
+        "bajo":1.4,
+        "primeraHora":["14:50","Alta"],
+        "segundaHora":["21:11","Baja"]
+      },
+      "actPesquera": 1
+    }
+   
+]
