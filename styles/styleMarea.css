@@ -3,6 +3,15 @@
     padding: 0;
     box-sizing: border-box;
 }
+@keyframes agrandar {
+    
+    0%{
+        width: 100%;
+    }
+    100%{
+        width: 110%;
+    }
+}
 
 .container{
     display: flex;
@@ -19,6 +28,7 @@
     background-color: rgb(253, 237, 218);
     
 }
+
 .rango{
     background-color: rgb(168, 168, 162);
     height: 100%;
@@ -66,4 +76,54 @@
     width: 20%;
     height: 100%;
     background-color: rgb(59, 0, 0);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+}
+.escalera{
+    width: 100%;
+    
+}
+
+.barranco div p{
+    color: white;
+}
+.bajada{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 15%;
+    width: 100%;
+}
+
+.bajada2{
+    height: 15%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: flex-end;
+    align-items: center;
+    
+}
+.bajada2 .escalera{
+    filter: drop-shadow(0px 0px 12px orange);
+    animation: agrandar 1s infinite alternate;
+    position: absolute;
+    top: 10%;
+}
+.loguito{
+    
+    z-index: 100;
+    width: 90%;
+    position: absolute;
+    left: -60%;
+    top: -10%;
+    border-radius: 7px;
+    filter: drop-shadow(0px 0px 15px rgb(255, 166, 0));
+
+    
 }

@@ -1,6 +1,6 @@
 "use strict"
 let date = new Date();
-         
+console.log(date);
 
 fetch("../archives/fuente.json")
     .then((response) => response.json())
@@ -37,7 +37,7 @@ function showData(archivoJson) {
             
 
             if (horaActual < element.primerCiclo.primeraHora[0]) {
-                console.log("PRIMER IF!");
+                console.log("%cPRIMER IF","color: blue; font-family:serif; font-size: 20px");
 
                 console.log(`La hora es ${horaActual}, tas antes de la primer hora del json`);
 
@@ -54,6 +54,7 @@ function showData(archivoJson) {
 
                 horas1=parseFloat(`${arregloJson[i-1].segundoCiclo.segundaHora[0][0]}${arregloJson[i-1].segundoCiclo.segundaHora[0][1]}.${arregloJson[i-1].segundoCiclo.segundaHora[0][3]}${arregloJson[i-1].segundoCiclo.segundaHora[0][4]}`);
                 horas2=parseFloat(`${element.primerCiclo.primeraHora[0][0]}${element.primerCiclo.primeraHora[0][1]}.${element.primerCiclo.primeraHora[0][3]}${element.primerCiclo.primeraHora[0][4]}`);
+                horaActualFloat=parseFloat(`${date.getHours()}.${date.getMinutes().toString().length < 2 ?'0'+date.getMinutes().toString():date.getMinutes().toString()}`);
                 horas1=horas1-24;
                 resulA=horas2-horas1;
                 resulB= horaActualFloat-horas1;
@@ -72,32 +73,34 @@ function showData(archivoJson) {
                     console.log("marea subiendo");
                 }
             } else if (horaActual > element.primerCiclo.primeraHora[0] && horaActual < element.primerCiclo.segundaHora[0]) {
-                console.log("SEGUNDO IF!");
+                console.log("%cSEGUNDO IF","color: blue; font-family:serif; font-size: 20px");
 
                 console.log(`Son las ${horaActual} y esta dentro del rango ${element.primerCiclo.primeraHora[0]} - ${element.primerCiclo.segundaHora[0]} del primer ciclo`);
 
             } else if (horaActual > element.primerCiclo.segundaHora[0] && horaActual < element.segundoCiclo.primeraHora[0]) {
-                console.log("TERCER IF!");
+                console.log("%cTERCER IF","color: blue; font-family:serif; font-size: 20px");
 
                 console.log(`Son las ${horaActual} y esta entre el primer ciclo y el segundo ${element.primerCiclo.segundaHora[0]}-${element.segundoCiclo.primeraHora[0]}`);
                 console.log(`La marea a las ${element.primerCiclo.segundaHora[0]} estaba  ${element.primerCiclo.segundaHora[1]} con ${element.primerCiclo.segundaHora[1] === "Baja" ? element.primerCiclo.bajo : element.primerCiclo.alto} y a las ${element.segundoCiclo.primeraHora[0]} va a estar ${element.segundoCiclo.primeraHora[1]} con ${element.segundoCiclo.segundaHora[1] === "Alta" ? element.segundoCiclo.bajo : element.segundoCiclo.alto} `)
 
                 document.querySelector(".rango").style.marginLeft=`${element.primerCiclo.bajo+5}%`;
 
-                document.querySelector(".rango").style.marginRight=`${element.primerCiclo.alto+5}%`;
+                document.querySelector(".rango").style.marginRight=`${15-(element.segundoCiclo.alto)}%`;
 
                 document.querySelector(".min").innerHTML=`min: ${element.primerCiclo.bajo}`;
 
-                document.querySelector(".max").innerHTML=`max: ${element.primerCiclo.alto}`;
+                document.querySelector(".max").innerHTML=`max: ${element.segundoCiclo.alto}`;
 
                 horas1=parseFloat(`${element.primerCiclo.segundaHora[0][0]}${element.primerCiclo.segundaHora[0][1]}.${element.primerCiclo.segundaHora[0][3]}${element.primerCiclo.segundaHora[0][4]}`);
                 horas2=parseFloat(`${element.segundoCiclo.primeraHora[0][0]}${element.segundoCiclo.primeraHora[0][1]}.${element.segundoCiclo.primeraHora[0][3]}${element.segundoCiclo.primeraHora[0][4]}`);
-                horaActualFloat=parseFloat(`${date.getHours()}.${date.getMinutes()}`);
+                horaActualFloat=parseFloat(`${date.getHours()}.${date.getMinutes().toString().length < 2 ?'0'+date.getMinutes().toString():date.getMinutes().toString()}`);
                 
                 console.log(horas1,horas2,horaActualFloat);
                 
                 resulA=horas2-horas1;
                 resulB= horaActualFloat-horas1;
+
+                console.log(resulA,resulB,resulB*100/resulA);
 
                 porcentaje = ((resulB*100)/resulA).toFixed(2);
                 
@@ -117,14 +120,14 @@ function showData(archivoJson) {
                 
 
             } else if (horaActual > element.segundoCiclo.primeraHora[0] && horaActual < element.segundoCiclo.segundaHora[0]) {
-                console.log("CUARTO IF!");
+                console.log("%cCUARTO IF","color: blue; font-family:serif; font-size: 20px");
 
                 console.log(`Son las ${horaActual} y esta en el segundo ciclo  ${element.segundoCiclo.primeraHora[0]} - ${element.segundoCiclo.segundaHora[0]}`);
                 console.log(`La marea a las ${element.segundoCiclo.primeraHora[0]} estaba  ${element.segundoCiclo.primeraHora[1]} con ${element.segundoCiclo.primeraHora[1]==="Baja" ? element.segundoCiclo.bajo : element.segundoCiclo.alto} y a las ${element.segundoCiclo.segundaHora[0]} va a estar ${element.segundoCiclo.segundaHora[1]} con ${element.segundoCiclo.segundaHora[1]==="Alta" ? element.segundoCiclo.alto : element.segundoCiclo.bajo} `)
             
                 document.querySelector(".rango").style.marginLeft=`${element.segundoCiclo.bajo+5}%`;
 
-                document.querySelector(".rango").style.marginRight=`${element.segundoCiclo.alto+5}%`;
+                document.querySelector(".rango").style.marginRight=`${15-(element.segundoCiclo.alto)}%`;
 
                 document.querySelector(".min").innerHTML=`min: ${element.segundoCiclo.bajo}`;
 
@@ -134,7 +137,7 @@ function showData(archivoJson) {
 
                 horas1=parseFloat(`${element.segundoCiclo.primeraHora[0][0]}${element.segundoCiclo.primeraHora[0][1]}.${element.segundoCiclo.primeraHora[0][3]}${element.segundoCiclo.primeraHora[0][4]}`);
                 horas2=parseFloat(`${element.segundoCiclo.segundaHora[0][0]}${element.segundoCiclo.segundaHora[0][1]}.${element.segundoCiclo.segundaHora[0][3]}${element.segundoCiclo.segundaHora[0][4]}`);
-                horaActualFloat=parseFloat(`${date.getHours()}.${date.getMinutes()}`);
+                horaActualFloat=parseFloat(`${date.getHours()}.${date.getMinutes().toString().length < 2 ?'0'+date.getMinutes().toString():date.getMinutes().toString()}`);
                 
                 console.log(horas1,horas2,horaActualFloat);
                 
@@ -157,8 +160,43 @@ function showData(archivoJson) {
                 
 
             } else if (horaActual > element.segundoCiclo.segundaHora[0]) {
-                console.log("QUINTO IF");
-                console.log(`son las ${horaActual} y paso la segunda hora del ciclo dos`);
+                console.log("%cQUINTO IF","color: blue; font-family:serif; font-size: 20px");
+                
+                console.log(`Son las ${horaActual} y esta en el segundo ciclo  ${element.segundoCiclo.segundaHora[0]} - ${arregloJson[i+1].primerCiclo.primeraHora[0]} del dia de mañana`);
+                console.log(`La marea a las  ${element.segundoCiclo.segundaHora[0]} estaba ${element.segundoCiclo.segundaHora[1]} con ${element.segundoCiclo.segundaHora[1]==="Baja" ? element.segundoCiclo.bajo : element.segundoCiclo.alto} y a las ${arregloJson[i+1].primerCiclo.primeraHora[0]} de mañana va a estar ${arregloJson[i+1].primerCiclo.primeraHora[1]} con ${arregloJson[i+1].primerCiclo.primeraHora[1]==="Alta" ? arregloJson[i+1].primerCiclo.alto : arregloJson[i+1].primerCiclo.bajo} `)
+            
+                document.querySelector(".rango").style.marginLeft=`${element.segundoCiclo.bajo+5}%`;
+
+                document.querySelector(".rango").style.marginRight=`${15-(arregloJson[i+1].primerCiclo.alto)}%`;
+
+                document.querySelector(".min").innerHTML=`min: ${element.segundoCiclo.bajo}`;
+
+                document.querySelector(".max").innerHTML=`max: ${arregloJson[i+1].primerCiclo.alto}`;
+                //falta agregar las horas para mostrar el agua
+                
+                horas1=parseFloat(`${element.segundoCiclo.segundaHora[0][0]}${element.segundoCiclo.segundaHora[0][1]}.${element.segundoCiclo.segundaHora[0][3]}${element.segundoCiclo.segundaHora[0][4]}`);
+                horas2=parseFloat(`${arregloJson[i+1].primerCiclo.primeraHora[0][0]}${arregloJson[i+1].primerCiclo.primeraHora[0][1]}.${arregloJson[i+1].primerCiclo.primeraHora[0][3]}${arregloJson[i+1].primerCiclo.primeraHora[0][4]}`);
+                horaActualFloat=parseFloat(`${date.getHours()}.${date.getMinutes().toString().length < 2 ?'0'+date.getMinutes().toString():date.getMinutes().toString()}`);
+                
+                console.log(horas1,horas2,horaActualFloat);
+                horas2=horas2+12; //atento aca, revisar todo
+                resulA=horas1-horas2;
+                resulB= horaActualFloat-horas1;
+                console.log("resultados a y b:",resulA,resulB);
+                porcentaje = ((resulB*100)/resulA).toFixed(2);
+                
+                console.log("Porcentaje:",porcentaje,"%");
+
+                if(arregloJson[i+1].primerCiclo.primeraHora[1]=="Baja"){
+                    
+                    document.querySelector(".agua").style.right=`${porcentaje}%`;
+                    console.log("marea bajando");
+                }else{
+                    
+                    document.querySelector(".agua").style.right=`${100-porcentaje}%`;
+                    console.log("marea subiendo");
+                }
+
             }
 
         }
@@ -169,4 +207,3 @@ function showData(archivoJson) {
 
 //pruebas
 
-console.log("asdasas",date.getHours().toString().length);
